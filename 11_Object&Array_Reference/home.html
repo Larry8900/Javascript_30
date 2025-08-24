@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let players = ['wes', 'sarah', 'ryan'];
+        let team = players;
+        team[3] = 'pux';
+        // reassigning content of an array will make changes to the reference/initial array
+
+        console.table(players, team)
+
+        // we take a copy instead
+        const team2 = players.slice()
+
+        // or create a new array and concat the old one in 
+        const team3 = [].concat(players);
+
+        // or use ES6 spread
+        const team4 = [...players];
+
+        // or copy from the array
+        const team5 = Array.from(players);
+
+        // with objects
+
+        const person = {
+            name: 'wes Bos',
+            age: 90
+        };
+        const captain = person;
+        captain.number = 99;
+        console.log(captain, person)
+
+        // to copy an object
+        const cap2 = Object.assign({}, person, {number:99, age:12})
+        console.log(cap2, captain)
+
+        // this is only 1 level deep - both for Arrays and Objects
+
+        const wes = {
+            name: 'wes',
+            age: 100,
+            social: {
+                twitter: '@wesbos',
+                facebook: 'wesbos.dev'
+            }
+        }
+        console.log(wes);
+        const dev = Object.assign({},wes, {social:'yyew'});
+        console.log(dev)
+
+        const dev2 = JSON.parse(JSON.stringify(wes))
+        console.log(dev2)
+    </script>
+</body>
+</html>
